@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form-container" id="form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="login-email">Email:</label>
+                <input type="email" id="loginEmail" name="email" required>
+
+                <label for="login-password">Password:</label>
+                <input type="password" id="loginPassword" name="password" required>
+
+                <button type="submit" id="loginBtn">Login</button>
+
+                <div class="google-btn" id="googleSignUpBtn">
+                    <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google logo">
+                    Login with Google
+                </div>
+
+                <a href="../signup/index.html" class="signup-link">Don't have an account? Sign up now.</a>
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="login.js" type="module"></script>
+</body>
+
+</html>
