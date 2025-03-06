@@ -32,7 +32,7 @@ const Login = (event) => {
         
         // Redirect after a short delay
         setTimeout(() => {   
-            window.location.href = "../Dashboard/dashboard.html";
+            window.location.href = "../dashboard/dashboard.html";
         }, 1500);
     })
     .catch((error) => {
@@ -49,7 +49,7 @@ if (loginBtn) {
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        window.location.href = "../Dashboard/dashboard.html";
+        window.location.href = "../dashboard/dashboard.html";
     }
 });
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Redirect user
                     setTimeout(() => {
-                        window.location.href = "../Dashboard/dashboard.html";
+                        window.location.href = "../dashboard/dashboard.html";
                     }, 2000);
                 })
                 .catch((error) => {
