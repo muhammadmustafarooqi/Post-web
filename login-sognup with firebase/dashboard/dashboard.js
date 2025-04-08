@@ -8,6 +8,8 @@ let Assignmentlink = document.getElementById('link');
 let docBtn = document.getElementById('add');
 let data = document.querySelector('.data');
 let loader = document.getElementById('loader');
+const searchInput = document.getElementById("searchInput");
+const postsContainer = document.getElementById("postsContainer");
 
 // Initialize loader
 loader.style.display = 'none';
@@ -124,11 +126,22 @@ const getAssignment = async (currentUserId) => {
         });
 
         // Sort by timestamp (newest first)
-        posts.sort((a, b) => {
-            const timeA = a.timestamp ? a.timestamp.seconds : 0;
-            const timeB = b.timestamp ? b.timestamp.seconds : 0;
-            return timeB - timeA;
-        });
+        // Get selected sort option
+        const sortSelect = document.getElementById("sortSelect");
+        const sortBy = sortSelect?.value || "newest";
+
+        if (sortBy === "newest") {
+            posts.sort((a, b) => {
+                const timeA = a.timestamp?.seconds || 0;
+                const timeB = b.timestamp?.seconds || 0;
+                return timeB - timeA;
+            });
+        } else if (sortBy === "liked") {
+            posts.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+        } else if (sortBy === "alphabetical") {
+            posts.sort((a, b) => (a.sttudentName || "").localeCompare(b.sttudentName || ""));
+        }
+
 
         posts.forEach((post) => {
             const { sttudentName, Assignment, userId, likes } = post;
@@ -480,4 +493,52 @@ showMyBtn.addEventListener("click", () => {
     showMyBtn.classList.add("active");
     showAllBtn.classList.remove("active");
     getAssignment(auth.currentUser.uid);
+});
+
+
+// search bar
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const posts = document.querySelectorAll(".Postcontainer");
+
+    posts.forEach(post => {
+        const name = post.querySelector(".card-header")?.textContent.toLowerCase() || "";
+        const content = post.querySelector(".card-text")?.textContent.toLowerCase() || "";
+
+        const matches = name.includes(query) || content.includes(query);
+        post.style.display = matches ? "block" : "none";
+    });
+});
+
+// sort condition
+
+const sortDropdown = document.getElementById("sortSelect");
+if (sortDropdown) {
+    sortDropdown.addEventListener("change", () => {
+        getAssignment(auth.currentUser.uid);
+    });
+}
+
+
+// toggle darkmode
+const darkToggle = document.getElementById("darkModeToggle");
+const themeIcon = document.getElementById("themeIcon");
+
+// Load theme from localStorage
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    darkToggle.checked = true;
+    themeIcon.classList.replace("fa-moon", "fa-sun");
+}
+
+darkToggle.addEventListener("change", () => {
+    if (darkToggle.checked) {
+        document.body.classList.add("dark-mode");
+        localStorage.setItem("theme", "dark");
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+    } else {
+        document.body.classList.remove("dark-mode");
+        localStorage.setItem("theme", "light");
+        themeIcon.classList.replace("fa-sun", "fa-moon");
+    }
 });
