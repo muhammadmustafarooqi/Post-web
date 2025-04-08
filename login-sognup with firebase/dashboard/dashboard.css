@@ -84,6 +84,28 @@ header button:hover {
     background-color: #c0392b;
 }
 
+/* Filter Buttons */
+.btn-filter {
+    padding: 10px 20px;
+    background-color: #bdc3c7;
+    color: #2c3e50;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-filter:hover {
+    background-color: #95a5a6;
+}
+
+.btn-filter.active {
+    background-color: #1abc9c;
+    color: white;
+}
+
 /* Content Section */
 .content {
     background-color: #fff;
@@ -104,44 +126,6 @@ header button:hover {
 .content p {
     font-size: 16px;
     color: #7f8c8d;
-}
-
-/* Form Styling */
-.stdForm {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 350px;
-    width: 100%;
-}
-
-.stdForm input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-.stdForm button {
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.stdForm button:hover {
-    background: #0056b3;
 }
 
 /* Loader Animation */
@@ -202,22 +186,53 @@ header button:hover {
     margin-bottom: 15px;
 }
 
-/* Buttons */
-.Postcontainer button {
-    display: inline-block;
-    padding: 8px 12px;
-    font-size: 14px;
+/* Post Buttons Layout */
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Like Button */
+.btn-like {
+    background: #3498db;
+    color: #fff;
+    padding: 8px 16px;
     border: none;
-    border-radius: 6px;
+    font-size: 14px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease-in-out;
-    margin: 5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-like:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Like Count */
+.like-count {
+    font-weight: bold;
+    color: #34495e;
+    font-size: 14px;
 }
 
 /* Delete Button */
 .btn-danger {
     background: #e74c3c;
     color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn-danger:hover {
@@ -229,6 +244,12 @@ header button:hover {
 .btn-warning {
     background: #f39c12;
     color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn-warning:hover {
@@ -236,13 +257,90 @@ header button:hover {
     transform: scale(1.05);
 }
 
-/* Layout for Posts */
+/* Posts Section */
 .data {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 15px;
-    justify-content: center;
+    align-items: center;
     padding-top: 20px;
+}
+
+/* CSS for Comments */
+.comment-section {
+    margin-top: 20px;
+    border-top: 1px solid #ecf0f1;
+    padding-top: 15px;
+}
+
+.comments-list {
+    margin-bottom: 15px;
+    max-height: 200px; /* Limit height if there are many comments */
+    overflow-y: auto;  /* Allow scrolling for overflow */
+}
+
+.comment {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ecf0f1;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment button:hover {
+    background-color: #c0392b;
+}
+
+/* Styling for the comment input area */
+.comment-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.comment-input-container input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ecf0f1;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.comment-input-container input:focus {
+    border-color: #3498db;
+}
+
+.comment-input-container button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.comment-input-container button:hover {
+    background-color: #2980b9;
 }
 
 /* Responsive Design */
@@ -262,5 +360,25 @@ header button:hover {
 
     .Postcontainer {
         max-width: 100%;
+    }
+
+    .post-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-like,
+    .btn-danger,
+    .btn-warning {
+        width: 100%;
+    }
+    
+    .comment-input-container {
+        flex-direction: column;
+    }
+    
+    .comment-input-container input,
+    .comment-input-container button {
+        width: 100%;
     }
 }
