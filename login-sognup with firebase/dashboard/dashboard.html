@@ -7,6 +7,83 @@
     <title>Simple Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css">
+    <style>
+        /* Enhanced Form Styling */
+        .post-form-container {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: transform 0.2s ease;
+        }
+
+        .post-form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-form-title {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .post-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .post-form input,
+        .post-form textarea {
+            padding: 12px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .post-form input:focus,
+        .post-form textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+        .post-form button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .post-form button:hover {
+            background-color: #2980b9;
+            transform: scale(1.02);
+        }
+
+        /* Filter buttons styling */
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .btn-filter {
+            padding: 10px 25px;
+            margin: 0 8px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,21 +106,31 @@
                 <h1>Welcome to your Dashboard!</h1>
                 <button id="logoutBtn">Logout</button>
             </header>
-            <div class="content">
-                <div class="stdForm">
-                    <input type="text" name="" id="stdName" placeholder="Your Name">
-                    <textarea type="text" name="" id="link" rows="10" cols="20" placeholder="Type what you think!"></textarea>
-                    <button id="add">Add</button>
+
+            <!-- Filter Buttons -->
+            <div class="filter-section">
+                <button id="showAllBtn" class="btn-filter active">All Posts</button>
+                <button id="showMyBtn" class="btn-filter">My Posts</button>
+            </div>
+
+            <!-- Enhanced Post Add Container -->
+            <div class="post-form-container">
+                <h3 class="post-form-title">Share Your Thoughts</h3>
+                <div class="post-form">
+                    <input type="text" id="stdName" placeholder="Your Name">
+                    <textarea id="link" rows="5" placeholder="Type what you think!"></textarea>
+                    <button id="add">Post</button>
                     <div class="loader" id="loader"></div>
                 </div>
             </div>
+
+            <!-- Posts Area -->
             <div class="data">
-                <h2 id="allposts">All Posts</h2>
-    
+                <!-- Posts will be appended here by JavaScript -->
             </div>
         </div>
     </div>
-    
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="dashboard.js" type="module"></script>
 </body>
