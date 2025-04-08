@@ -7,6 +7,8 @@
     <title>Simple Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         /* Enhanced Form Styling */
         .post-form-container {
@@ -103,9 +105,31 @@
         <!-- Main content -->
         <div class="main-content">
             <header>
-                <h1>Welcome to your Dashboard!</h1>
+                <h1 id="mainHeading">Welcome to your Dashboard!</h1>
+                <div class="theme-toggle">
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <i id="themeIcon" class="fas fa-moon"></i>
+                </div>
                 <button id="logoutBtn">Logout</button>
+                  
             </header>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search posts by name...">
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="sort-container">
+                <label for="sortSelect">Sort by:</label>
+                <select id="sortSelect">
+                    <option value="newest">Newest</option>
+                    <option value="liked">Most Liked</option>
+                    <option value="alphabetical">Alphabetical (A-Z)</option>
+                </select>
+            </div>
 
             <!-- Filter Buttons -->
             <div class="filter-section">
