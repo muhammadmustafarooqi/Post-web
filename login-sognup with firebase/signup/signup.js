@@ -1,4 +1,4 @@
-import { auth } from "../firebase.js";
+import { auth , signOut} from "../firebase.js";
 import { 
     createUserWithEmailAndPassword, 
     onAuthStateChanged 
@@ -31,18 +31,21 @@ const signup = (event) => {
     }
 
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
-        .then((userCredential) => {
-            console.log("User created successfully:", userCredential.user); 
-            Toastify({ text: "Account created successfully!", duration: 3000 }).showToast();
+    .then((userCredential) => {
+        console.log("User created successfully:", userCredential.user); 
+        Toastify({ text: "Account created successfully!", duration: 3000 }).showToast();
 
+        // Sign out the user
+        signOut(auth).then(() => {
             setTimeout(() => {
                 window.location.href = "../login/index.html";
             }, 2000);
-        })
-        .catch((error) => {
-            console.error("Error:", error.code, error.message);
-            Toastify({ text: "Error: " + error.message, duration: 3000 }).showToast();
         });
+    })
+    .catch((error) => {
+        console.error("Error:", error.code, error.message);
+        Toastify({ text: "Error: " + error.message, duration: 3000 }).showToast();
+    });
 };
 
 signUpBtn.addEventListener("click", signup);
